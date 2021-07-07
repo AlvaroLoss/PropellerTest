@@ -7,5 +7,5 @@ data class EventsResponse(
 	val user: User,
 
 	@field:SerializedName("events")
-	val events: List<EventsItem>
+    var events: List<EventsItem>
 )

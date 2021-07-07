@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PropellerTest</string>
+    <string name="event_id">Event Id</string>
+    <string name="medication_name">Medication Name</string>
+    <string name="medication_type">Medication Type</string>
+    <string name="timestamp">Timestamp</string>
 </resources>

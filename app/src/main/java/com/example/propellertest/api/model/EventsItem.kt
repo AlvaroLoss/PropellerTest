@@ -7,7 +7,7 @@ data class EventsItem(
     val uid: String,
 
     @field:SerializedName("datetime")
-    val datetime: String,
+    var datetime: String,
 
     @field:SerializedName("medicationtype")
     val medicationType: String,

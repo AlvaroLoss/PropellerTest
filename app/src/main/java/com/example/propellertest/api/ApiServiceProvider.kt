@@ -1,24 +1,19 @@
 package com.example.propellertest.api
 
-import com.example.propellertest.api.model.EventsItem
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
+import com.example.propellertest.utils.Utils
+import com.example.propellertest.api.model.EventsResponse
+import com.example.propellertest.utils.DateComparator
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.*
 
 class ApiServiceProvider(
     private val apiService: ApiInterface
 ) : IApiServiceProvider {
-    override fun getEventsByDate(): StateFlow<List<EventsItem>> {
-        val mutableStateFLow = MutableStateFlow(emptyList<EventsItem>())
-        GlobalScope.launch {
-            val list =
-                apiService.fetchEventData().events
-//                    .filter { !it.name.isNullOrEmpty() }
-//                    .sortedBy { it.name }
-//                    .sortedBy { it.id }
-            mutableStateFLow.emit(list)
-        }
-        return mutableStateFLow
+    override fun getEventsResponseWithOrderedEvents(): Flow<EventsResponse> {
+        return flow {
+            val response = apiService.fetchEventData()
+            response.events = response.events.sortedWith(DateComparator())
+            emit(response)
+        }.flowOn(Dispatchers.IO)
     }
 }

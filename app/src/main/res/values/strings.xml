@@ -4,4 +4,5 @@
     <string name="medication_name">Medication Name</string>
     <string name="medication_type">Medication Type</string>
     <string name="timestamp">Timestamp</string>
+    <string name="data_could_not_be_loaded">Data could not be loaded...</string>
 </resources>

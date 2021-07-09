@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.propellertest.api.model.EventsItem
 import com.example.propellertest.databinding.EventsItemBinding
-import com.example.propellertest.utils.Utils
+import com.example.propellertest.utils.DateUtils
 
 class EventsAdapter(
     private var eventsList: List<EventsItem>
@@ -34,7 +34,7 @@ class EventsAdapter(
             binding.eventId.text = "ID: " + item.uid
             binding.medicationName.text = "Medication Name: " + item.medication
             binding.medicationType.text = "Medication Type: " + item.medicationType
-            binding.timestamp.text  = Utils.convertDateToStandard(item.datetime)
+            binding.timestamp.text  = DateUtils.convertDateToStandard(item.datetime)
         }
     }
 }

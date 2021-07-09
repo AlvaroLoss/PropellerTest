@@ -9,13 +9,15 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.*
+import kotlin.random.Random
 
 class MainViewModel(
     private val apiServiceProvider: ApiServiceProvider
-) : ViewModel(), IMainViewModel  {
+) : ViewModel(), IMainViewModel {
     override val userLiveData: MutableLiveData<EventsResponse> = MutableLiveData()
     override val updateEventsList: MutableLiveData<List<EventsItem>> = MutableLiveData()
     private var organizedEventsList = arrayListOf<EventsItem>()
+    var addEventItem: EventsItem = EventsItem()
 
     init {
         fetchEventsResponse()
@@ -34,9 +36,26 @@ class MainViewModel(
         }
     }
 
-    override fun addEventInAscendingOrderByDate(event: EventsItem) {
-        organizedEventsList.add(event)
+    override fun addEventInAscendingOrderByDate() {
+        addEventItem.apply {
+            id = (10238208 until 1023820898).random()
+            uid = (10238208 until 1023820898).random().toString()
+        }
+        organizedEventsList.add(addEventItem)
         Collections.sort(organizedEventsList, DateComparator())
         updateEventsList.postValue(organizedEventsList)
+    }
+
+    override fun getAvailableMedicationNamesList(): List<String> {
+        return userLiveData.value?.user?.medications?.map {
+            it.name
+        }!!
+    }
+
+    override fun setMedicationName(position: Int) {
+        addEventItem.apply {
+            medication = userLiveData.value?.user?.medications?.get(position)?.name!!
+            medicationType = userLiveData.value?.user?.medications?.get(position)?.medicationType!!
+        }
     }
 }

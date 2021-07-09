@@ -4,17 +4,17 @@ import com.google.gson.annotations.SerializedName
 
 data class EventsItem(
     @field:SerializedName("uid")
-    val uid: String,
+    var uid: String = "",
 
     @field:SerializedName("datetime")
-    var datetime: String,
+    var datetime: String = "",
 
     @field:SerializedName("medicationtype")
-    val medicationType: String,
+    var medicationType: String = "",
 
     @field:SerializedName("medication")
-    val medication: String,
+    var medication: String = "",
 
     @field:SerializedName("id")
-    val id: Int
+    var  id: Int = 0
 )

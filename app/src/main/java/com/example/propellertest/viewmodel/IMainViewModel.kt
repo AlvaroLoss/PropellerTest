@@ -10,5 +10,7 @@ interface IMainViewModel {
     val userLiveData: MutableLiveData<EventsResponse>
     val updateEventsList: MutableLiveData<List<EventsItem>>
     fun fetchEventsResponse()
-    fun addEventInAscendingOrderByDate(event: EventsItem)
+    fun addEventInAscendingOrderByDate()
+    fun setMedicationName(position: Int)
+    fun getAvailableMedicationNamesList(): List<String>
 }

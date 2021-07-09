@@ -1,7 +1,7 @@
 package com.example.propellertest.utils
 
 import com.example.propellertest.api.model.EventsItem
-import com.example.propellertest.utils.Utils.format
+import com.example.propellertest.utils.DateUtils.format
 
 class DateComparator: Comparator<EventsItem> {
     override fun compare(o1: EventsItem?, o2: EventsItem?): Int {

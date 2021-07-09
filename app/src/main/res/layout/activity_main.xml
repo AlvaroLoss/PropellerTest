@@ -4,37 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
     <TextView
         android:id="@+id/no_data"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
         android:gravity="center"
-        android:text="@string/data_could_not_be_loaded"
-        android:visibility="gone"/>
+        android:text="@string/loading"
+        android:visibility="visible" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/medication_sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxWidth="150dp"
-            android:maxHeight="50dp"
-            app:layout_constraintBottom_toTopOf="@+id/events_rv"
+        <TextView
+            android:id="@+id/selected_date"
+            android:layout_width="@dimen/text_view_width"
+            android:layout_height="@dimen/text_view_height"
+            android:layout_marginHorizontal="5dp"
+            app:layout_constraintBottom_toTopOf="@id/selected_medication_name"
+            app:layout_constraintEnd_toStartOf="@+id/date_time_bt"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/add_medication_bt"
-            android:layout_width="150dp"
+            android:id="@+id/date_time_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="150dp"
+            android:maxHeight="50dp"
+            android:text="@string/pick_time"
+            app:layout_constraintBottom_toTopOf="@+id/medication_name_bt"
+            app:layout_constraintStart_toEndOf="@+id/selected_date"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/selected_medication_name"
+            android:layout_width="@dimen/text_view_width"
+            android:layout_height="@dimen/text_view_height"
+            android:layout_marginHorizontal="5dp"
+            app:layout_constraintBottom_toTopOf="@id/events_rv"
+            app:layout_constraintEnd_toStartOf="@+id/medication_name_bt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/selected_date" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/medication_name_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="150dp"
+            android:maxHeight="50dp"
+            android:text="@string/pick_medication"
+            app:layout_constraintBottom_toTopOf="@id/events_rv"
+            app:layout_constraintStart_toEndOf="@+id/selected_medication_name"
+            app:layout_constraintTop_toBottomOf="@id/date_time_bt" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/add_event_bt"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
+            android:text="@string/add_event"
             app:layout_constraintBottom_toTopOf="@+id/events_rv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -46,7 +80,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/medication_sp" />
+            app:layout_constraintTop_toBottomOf="@+id/medication_name_bt" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

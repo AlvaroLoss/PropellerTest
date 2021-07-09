@@ -5,4 +5,13 @@
     <string name="medication_type">Medication Type</string>
     <string name="timestamp">Timestamp</string>
     <string name="data_could_not_be_loaded">Data could not be loaded...</string>
+    <string name="medication_title_dialogue">Medications</string>
+    <string name="cancel">Cancel</string>
+    <string name="OK">OK</string>
+    <string name="loading">Loading...</string>
+    <string name="fields_missing">Fields for Time or Medication missing</string>
+    <string name="pick_medication">Pick Medication</string>
+    <string name="add_event">Add Event</string>
+    <string name="pick_time">Pick Time</string>
+    <string name="add_event_successfully">Event Added</string>
 </resources>
